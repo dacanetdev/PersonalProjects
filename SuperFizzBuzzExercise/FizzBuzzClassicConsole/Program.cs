@@ -5,7 +5,7 @@ namespace FizzBuzzClassicConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var superFizzBuzzGenerator = new SuperFizzBuzzGenerator(new FizzBuzzTokenizer());
 

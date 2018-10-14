@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using Moq;
+using System.Collections.Generic;
 
 namespace SuperFizzBuzz.Tests
 {
@@ -32,7 +33,7 @@ namespace SuperFizzBuzz.Tests
             superFizzBuzzGenerator.GenerateClassic();
 
             //Assert
-            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.Execute(It.IsAny<int>()), Times.Exactly(100));
+            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.GetToken(It.IsAny<int>()), Times.Exactly(100));
         }
 
         [Fact]
@@ -64,10 +65,10 @@ namespace SuperFizzBuzz.Tests
             superFizzBuzzGenerator.GenerateAdvanced(startLimit, endLimit);
 
             //Assert
-            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.Execute(It.IsAny<int>()), Times.Exactly(34));
+            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.GetToken(It.IsAny<int>()), Times.Exactly(34));
         }
 
-        [Fact(Skip = "Inconcluse")]
+        [Fact]
         public void CanGenerate_Advanced_When_startLimitMinus1_endLimitMinus35_Should_StartLimitMinus1_EndLimitMinus35()
         {
             //Arrange
@@ -83,5 +84,51 @@ namespace SuperFizzBuzz.Tests
             Assert.Equal(endLimit, superFizzBuzzGenerator.EndLimit);
         }
 
+        [Fact]
+        public void CanGenerate_Advanced_When_startLimitMinus1_endLimitMinus35_Should_CallExecute36Times()
+        {
+            //Arrange
+            var startLimit = -1;
+            var endLimit = -35;
+            var mockFizzBuzzTokenizer = new Mock<IFizzBuzzTokenizer>();
+            var superFizzBuzzGenerator = new SuperFizzBuzzGenerator(mockFizzBuzzTokenizer.Object);
+
+            //Act
+            superFizzBuzzGenerator.GenerateAdvanced(startLimit, endLimit);
+
+            //Assert
+            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.GetToken(It.IsAny<int>()), Times.Exactly(35));
+        }
+
+        [Fact]
+        public void CanGenerate_Advanced_When_Custom5Values_Should_CallExecute5Times()
+        {
+            //Arrange
+            var customValues = new List<int> { 200, 40, 5, 12, 23 };
+            var mockFizzBuzzTokenizer = new Mock<IFizzBuzzTokenizer>();
+            var superFizzBuzzGenerator = new SuperFizzBuzzGenerator(mockFizzBuzzTokenizer.Object);
+
+            //Act
+            superFizzBuzzGenerator.GenerateAdvanced(customValues);
+
+            //Assert
+            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.GetToken(It.IsAny<int>()), Times.Exactly(5));
+        }
+
+        [Fact(Skip = "Takes so long")]
+        public void CanGenerate_Advanced_When_startLimit1_endLimit1000000000_Should_CallExecute1000000000Times()
+        {
+            //Arrange
+            var startLimit = 1;
+            var endLimit = 1000000000;
+            var mockFizzBuzzTokenizer = new Mock<IFizzBuzzTokenizer>();
+            var superFizzBuzzGenerator = new SuperFizzBuzzGenerator(mockFizzBuzzTokenizer.Object);
+
+            //Act
+            superFizzBuzzGenerator.GenerateAdvanced(startLimit, endLimit);
+
+            //Assert
+            mockFizzBuzzTokenizer.Verify(sfbg => sfbg.GetToken(It.IsAny<int>()), Times.Exactly(1000000000));
+        }
     }
 }

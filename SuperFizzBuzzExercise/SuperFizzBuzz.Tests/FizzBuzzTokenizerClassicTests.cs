@@ -6,7 +6,7 @@ namespace SuperFizzBuzz.Tests
 {
     public class FizzBuzzTokenizerClassicTests
     {
-        private FizzBuzzTokenizer fizzBuzzTokenizer;
+        private readonly IFizzBuzzTokenizer fizzBuzzTokenizer;
 
         public FizzBuzzTokenizerClassicTests()
         {
@@ -20,7 +20,7 @@ namespace SuperFizzBuzz.Tests
             var value = 1;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("1", result);
@@ -33,10 +33,23 @@ namespace SuperFizzBuzz.Tests
             var value = 100;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("Buzz", result);
+        }
+
+        [Fact]
+        public void CanExecute_When0_Returns0()
+        {
+            //Arrange
+            var value = 0;
+
+            //Act
+            var result = fizzBuzzTokenizer.GetToken(value);
+
+            //Assert
+            Assert.Equal("0", result);
         }
 
         [Fact]
@@ -46,7 +59,7 @@ namespace SuperFizzBuzz.Tests
             var value = 2;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("2", result);
@@ -59,7 +72,7 @@ namespace SuperFizzBuzz.Tests
             var value = 3;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("Fizz", result);
@@ -72,7 +85,7 @@ namespace SuperFizzBuzz.Tests
             var value = 5;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("Buzz", result);
@@ -85,7 +98,7 @@ namespace SuperFizzBuzz.Tests
             var value = 15;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("FizzBuzz", result);
@@ -98,7 +111,7 @@ namespace SuperFizzBuzz.Tests
             var value = 11;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("11", result);
@@ -111,7 +124,7 @@ namespace SuperFizzBuzz.Tests
             var value = 27;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("Fizz", result);
@@ -124,7 +137,7 @@ namespace SuperFizzBuzz.Tests
             var value = 55;
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value);
+            var result = fizzBuzzTokenizer.GetToken(value);
 
             //Assert
             Assert.Equal("Buzz", result);

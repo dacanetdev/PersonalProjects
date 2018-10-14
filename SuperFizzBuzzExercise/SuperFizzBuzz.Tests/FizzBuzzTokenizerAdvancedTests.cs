@@ -6,7 +6,7 @@ namespace SuperFizzBuzz.Tests
 {
     public class FizzBuzzTokenizerAdvancedTests
     {
-        private FizzBuzzTokenizer fizzBuzzTokenizer;
+        private readonly FizzBuzzTokenizer fizzBuzzTokenizer;
 
         public FizzBuzzTokenizerAdvancedTests()
         {
@@ -23,7 +23,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Fizz", result);
@@ -37,7 +37,7 @@ namespace SuperFizzBuzz.Tests
             var options = new Dictionary<int, string>();
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("145", result);
@@ -53,7 +53,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Fizz", result);
@@ -69,7 +69,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Buzz", result);
@@ -85,7 +85,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Bazz", result);
@@ -102,7 +102,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FizzBuzz", result);
@@ -119,7 +119,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FizzBazz", result);
@@ -135,7 +135,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Fizz", result);
@@ -152,10 +152,28 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FizzBuzz", result);
+        }
+
+        [Fact]
+        public void CanExecute_When0_Returns0()
+        {
+            //Arrange
+            var value = 0;
+            var options = new Dictionary<int, string> {
+                {3, "Fizz"},
+                {7, "Buzz"},
+                {38, "Bazz"}
+            };
+
+            //Act
+            var result = fizzBuzzTokenizer.GetToken(value, options);
+
+            //Assert
+            Assert.Equal("0", result);
         }
 
         [Fact]
@@ -166,7 +184,7 @@ namespace SuperFizzBuzz.Tests
             var options = new Dictionary<int, string>();
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("88", result);
@@ -182,7 +200,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Frog", result);
@@ -198,7 +216,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Duck", result);
@@ -214,7 +232,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("Chicken", result);
@@ -231,7 +249,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FrogDuck", result);
@@ -248,7 +266,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FrogChicken", result);
@@ -266,7 +284,7 @@ namespace SuperFizzBuzz.Tests
             };
 
             //Act
-            var result = fizzBuzzTokenizer.Execute(value, options);
+            var result = fizzBuzzTokenizer.GetToken(value, options);
 
             //Assert
             Assert.Equal("FrogDuckChicken", result);
