@@ -1,29 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace SuperFizzBuzz
 {
+    /// <summary>
+    /// Fizz buzz tokenizer. Returns FizzBuzz Tokens based on value
+    /// * If only value is provided Executes Classic FizzBuzz: 
+    ///     1 to 100, multiples of 3 = Fizz, multiples of 5 = Buzz,
+    /// multiples of 3 and 5 = FizzBuzz
+    /// * If options are provided it can return any token for any
+    /// value specified in the Options Dictionary
+    /// </summary>
     public class FizzBuzzTokenizer: IFizzBuzzTokenizer
     {
-        public FizzBuzzTokenizer()
-        {
+        //Overload for Classic FizzBuzz
+        public string GetToken(int value){
+            var options = new Dictionary<int, string>{
+                {3, "Fizz"},
+                {5, "Buzz"}
+            };
+
+            return GetToken(value, options);
         }
 
-        public string Execute(int value){
-            if (value % 3 == 0 && value % 5 == 0)
+        //Overload for Advanced FizzBuzz
+        public string GetToken(int value, Dictionary<int, string> options)
+        {
+            if (value == 0) return "0";
+
+            var sbResult = new StringBuilder();
+
+            foreach (var option in options)
             {
-                return "FizzBuzz";
+                if(value % option.Key == 0){
+                    sbResult.Append(option.Value);
+                }
             }
 
-            if (value % 3 == 0)
-            {
-                return "Fizz";
-            }
+            var result = sbResult.ToString();
 
-            if(value % 5 == 0)
-            {
-                return "Buzz";
-            }
-
-            return value.ToString();
+            return !string.IsNullOrWhiteSpace(result) ? result : value.ToString();
         }
     }
 }
