@@ -40,6 +40,19 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
+        public void CanGetToken_When0_Returns0()
+        {
+            //Arrange
+            var value = 0;
+
+            //Act
+            var result = fizzBuzzTokenizer.GetToken(value);
+
+            //Assert
+            Assert.Equal("0", result);
+        }
+
+        [Fact]
         public void CanGetToken_When2_Returns2()
         {
             //Arrange
