@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace SuperFizzBuzz
 {
     public class FizzBuzzTokenizer: IFizzBuzzTokenizer
@@ -7,23 +10,31 @@ namespace SuperFizzBuzz
         {
         }
 
+        //Overload for Classic FizzBuzz
         public string Execute(int value){
-            if (value % 3 == 0 && value % 5 == 0)
+            var options = new Dictionary<int, string>{
+                {3, "Fizz"},
+                {5, "Buzz"}
+            };
+
+            return Execute(value, options);
+        }
+
+        //Overload for Advanced FizzBuzz
+        public string Execute(int value, Dictionary<int, string> options)
+        {
+            var sbResult = new StringBuilder();
+
+            foreach (var option in options)
             {
-                return "FizzBuzz";
+                if(value % option.Key == 0){
+                    sbResult.Append(option.Value);
+                }
             }
 
-            if (value % 3 == 0)
-            {
-                return "Fizz";
-            }
+            var result = sbResult.ToString();
 
-            if(value % 5 == 0)
-            {
-                return "Buzz";
-            }
-
-            return value.ToString();
+            return !string.IsNullOrWhiteSpace(result) ? result : value.ToString();
         }
     }
 }

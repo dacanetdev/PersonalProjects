@@ -2,7 +2,7 @@ using System;
 using Xunit;
 using SuperFizzBuzz;
 
-namespace SuperFizzBuzzTests
+namespace SuperFizzBuzz.Tests
 {
     public class FizzBuzzTokenizerClassicTests
     {
@@ -14,7 +14,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When1_Returns1()
+        public void CanExecute_When1_Returns1()
         {
             //Arrange
             var value = 1;
@@ -27,7 +27,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When100_ReturnsBuzz()
+        public void CanExecute_When100_ReturnsBuzz()
         {
             //Arrange
             var value = 100;
@@ -40,7 +40,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When2_Returns2()
+        public void CanExecute_When2_Returns2()
         {
             //Arrange
             var value = 2;
@@ -53,7 +53,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When3_ReturnsFizz()
+        public void CanExecute_When3_ReturnsFizz()
         {
             //Arrange
             var value = 3;
@@ -66,7 +66,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When5_ReturnsBuzz()
+        public void CanExecute_When5_ReturnsBuzz()
         {
             //Arrange
             var value = 5;
@@ -79,7 +79,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When15_ReturnsFizzBuzz()
+        public void CanExecute_When15_ReturnsFizzBuzz()
         {
             //Arrange
             var value = 15;
@@ -92,7 +92,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When11_Returns11()
+        public void CanExecute_When11_Returns11()
         {
             //Arrange
             var value = 11;
@@ -105,7 +105,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When27_ReturnsFizz()
+        public void CanExecute_When27_ReturnsFizz()
         {
             //Arrange
             var value = 27;
@@ -118,7 +118,7 @@ namespace SuperFizzBuzzTests
         }
 
         [Fact]
-        public void CanGenerate_When55_ReturnsBuzz()
+        public void CanExecute_When55_ReturnsBuzz()
         {
             //Arrange
             var value = 55;
