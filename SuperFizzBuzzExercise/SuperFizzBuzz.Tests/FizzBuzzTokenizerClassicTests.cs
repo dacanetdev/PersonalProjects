@@ -6,7 +6,7 @@ namespace SuperFizzBuzz.Tests
 {
     public class FizzBuzzTokenizerClassicTests
     {
-        private readonly IFizzBuzzTokenizer fizzBuzzTokenizer;
+        private FizzBuzzTokenizer fizzBuzzTokenizer;
 
         public FizzBuzzTokenizerClassicTests()
         {
@@ -14,7 +14,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When1_Returns1()
+        public void CanGetToken_When1_Returns1()
         {
             //Arrange
             var value = 1;
@@ -27,7 +27,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When100_ReturnsBuzz()
+        public void CanGetToken_When100_ReturnsBuzz()
         {
             //Arrange
             var value = 100;
@@ -40,20 +40,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When0_Returns0()
-        {
-            //Arrange
-            var value = 0;
-
-            //Act
-            var result = fizzBuzzTokenizer.GetToken(value);
-
-            //Assert
-            Assert.Equal("0", result);
-        }
-
-        [Fact]
-        public void CanExecute_When2_Returns2()
+        public void CanGetToken_When2_Returns2()
         {
             //Arrange
             var value = 2;
@@ -66,7 +53,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When3_ReturnsFizz()
+        public void CanGetToken_When3_ReturnsFizz()
         {
             //Arrange
             var value = 3;
@@ -79,7 +66,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When5_ReturnsBuzz()
+        public void CanGetToken_When5_ReturnsBuzz()
         {
             //Arrange
             var value = 5;
@@ -92,7 +79,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When15_ReturnsFizzBuzz()
+        public void CanGetToken_When15_ReturnsFizzBuzz()
         {
             //Arrange
             var value = 15;
@@ -105,7 +92,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When11_Returns11()
+        public void CanGetToken_When11_Returns11()
         {
             //Arrange
             var value = 11;
@@ -118,7 +105,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When27_ReturnsFizz()
+        public void CanGetToken_When27_ReturnsFizz()
         {
             //Arrange
             var value = 27;
@@ -131,7 +118,7 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
-        public void CanExecute_When55_ReturnsBuzz()
+        public void CanGetToken_When55_ReturnsBuzz()
         {
             //Arrange
             var value = 55;
