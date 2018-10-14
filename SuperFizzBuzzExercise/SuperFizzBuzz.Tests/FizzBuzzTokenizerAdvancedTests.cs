@@ -44,6 +44,20 @@ namespace SuperFizzBuzz.Tests
         }
 
         [Fact]
+        public void CanGetToken_When0_Returns0()
+        {
+            //Arrange
+            var value = 0;
+            var options = new Dictionary<int, string>();
+
+            //Act
+            var result = fizzBuzzTokenizer.GetToken(value, options);
+
+            //Assert
+            Assert.Equal("0", result);
+        }
+
+        [Fact]
         public void CanGetToken_When3_ReturnsFizz()
         {
             //Arrange
